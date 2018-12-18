@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>傅轶的天气预报</title>
+    <meta charset="UTF-8">
+    <meta name="viewport
+          content="width="device-width,initial-scale=1,shrink-to-fit=no ">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+     <div class="container">
+         <div class="row">
+             <h3 th:text="${reportModel.title}">fuyi</h3>
+             <select id="selectCityId">
+                 <option th:each="city : ${reportModel.cityList}"
+                         th:value="${city.cityId}"
+                         th:text="${city.cityName}"
+                         th:selected="${city.cityId eq reportModel.cityId}"
+                         >VolVo</option>
+             </select>
+         </div>
+         <div class="row">
+             <h1 th:text="${reportModel.report.city}"></h1>
+         </div>
+         <div class="row">
+             <p>
+                 空气质量指数：<span th:text="${reportModel.report.aqi}"></span>
+             </p>
+         </div>
+         <div class="row">
+             <p>
+                 当前温度：<span th:text="${reportModel.report.wendu}"></span>
+             </p>
+         </div>
+         <div class="row">
+             <p>
+                 温馨提示：<span th:text="${reportModel.report.ganmao}"></span>
+             </p>
+         </div>
+
+
+         <div class="row">
+             <div class="card" th:each="forecast : ${reportModel.report.forecast}">
+                 <div class="card-body">
+                     <p class="card-text" th:text="${forecast.date}">周五</p>
+                     <p class="card-text" th:text="${forecast.type}">晴转多云</p>
+                     <p class="card-text" th:text="${forecast.high}">高温28℃</p>
+                     <p class="card-text" th:text="${forecast.low}">低温21℃</p>
+                     <p class="card-text" th:text="${forecast.fengxiang}">无持续风向</p>
+                 </div>
+             </div>
+         </div>
+
+     </div>
+     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+     <script th:src="@{/js/weather/report.js}"></script>
+
+</body>
+</html>
