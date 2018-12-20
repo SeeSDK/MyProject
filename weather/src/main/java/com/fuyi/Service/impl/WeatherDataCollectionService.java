@@ -1,4 +1,4 @@
-package iml;
+package com.fuyi.Service.impl;
 /**
  *Author fuyi
  *ClassName WeatherDataCollectionService

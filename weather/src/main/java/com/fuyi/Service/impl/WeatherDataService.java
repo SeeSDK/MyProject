@@ -1,6 +1,6 @@
-package iml;
+package com.fuyi.Service.impl;
 
-import pojo.WeatherResponse;
+import com.fuyi.pojo.WeatherResponse;
 
 /**
  *Author fuyi

@@ -1,6 +1,6 @@
-package service;
+package com.fuyi.Service;
 
-import iml.WeatherDataCollectionService;
+import com.fuyi.Service.impl.WeatherDataCollectionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
