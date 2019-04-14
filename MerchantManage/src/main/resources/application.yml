@@ -1,0 +1,13 @@
+mybatis:
+  mapperLocations: classpath:com.lz.demo.mapper.*.xml
+  typeAliasesPackage: com.lz.demo.pojo
+  checkConfigLocation: false
+  n.map-underscore-to-caml-case: true
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/portaldb
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+Server.port: 8080

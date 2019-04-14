@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lz.demo.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.lz.demo.pojo.User" >
+    <id column="USERID" property="userid" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="USERPWD" property="userpwd" jdbcType="VARCHAR" />
+    <result column="USERTYPE" property="usertype" jdbcType="VARCHAR" />
+    <result column="ISREALNAME" property="isrealname" jdbcType="VARCHAR" />
+    <result column="ISSIGN" property="issign" jdbcType="VARCHAR" />
+    <result column="HEADPICID" property="headpicid" jdbcType="VARCHAR" />
+    <result column="INTRODUCTION" property="introduction" jdbcType="VARCHAR" />
+    <result column="ACCESSTOKEN" property="accesstoken" jdbcType="VARCHAR" />
+    <result column="SECRITKEY" property="secritkey" jdbcType="VARCHAR" />
+    <result column="GITURL" property="giturl" jdbcType="VARCHAR" />
+    <result column="GITUSERNAM" property="gitusernam" jdbcType="VARCHAR" />
+    <result column="GITPWD" property="gitpwd" jdbcType="VARCHAR" />
+    <result column="CASEURL" property="caseurl" jdbcType="VARCHAR" />
+    <result column="CASEUSERNAME" property="caseusername" jdbcType="VARCHAR" />
+    <result column="CASEPWD" property="casepwd" jdbcType="VARCHAR" />
+    <result column="FREEZE" property="freeze" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="EMAILSTATE" property="emailstate" jdbcType="VARCHAR" />
+    <result column="REGISTERTIME" property="registertime" jdbcType="VARCHAR" />
+    <result column="OWNER_PHOTO_BACK" property="ownerPhotoBack" jdbcType="VARCHAR" />
+    <result column="OWNER_PHOTO_FRONT" property="ownerPhotoFront" jdbcType="VARCHAR" />
+    <result column="ENTRUST_BOOK" property="entrustBook" jdbcType="VARCHAR" />
+    <result column="AGENT_PHOTO_FRONT" property="agentPhotoFront" jdbcType="VARCHAR" />
+    <result column="AGENT_PHOTO_BACK" property="agentPhotoBack" jdbcType="VARCHAR" />
+    <result column="BUSINESS_PHOTO" property="businessPhoto" jdbcType="VARCHAR" />
+    <result column="ORG_PHOTO" property="orgPhoto" jdbcType="VARCHAR" />
+    <result column="TAX_PHOTO" property="taxPhoto" jdbcType="VARCHAR" />
+    <result column="VALIDATECODE" property="validatecode" jdbcType="VARCHAR" />
+    <result column="REQUESTID" property="requestid" jdbcType="VARCHAR" />
+    <result column="IMGSTATE" property="imgstate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    USERID, USERNAME, USERPWD, USERTYPE, ISREALNAME, ISSIGN, HEADPICID, INTRODUCTION, 
+    ACCESSTOKEN, SECRITKEY, GITURL, GITUSERNAM, GITPWD, CASEURL, CASEUSERNAME, CASEPWD, 
+    FREEZE, EMAIL, EMAILSTATE, REGISTERTIME, OWNER_PHOTO_BACK, OWNER_PHOTO_FRONT, ENTRUST_BOOK, 
+    AGENT_PHOTO_FRONT, AGENT_PHOTO_BACK, BUSINESS_PHOTO, ORG_PHOTO, TAX_PHOTO, VALIDATECODE, 
+    REQUESTID, IMGSTATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lz.demo.pojo.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lz.demo.pojo.UserExample" >
+    delete from user_
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lz.demo.pojo.User" >
+    insert into user_ (USERID, USERNAME, USERPWD, 
+      USERTYPE, ISREALNAME, ISSIGN, 
+      HEADPICID, INTRODUCTION, ACCESSTOKEN, 
+      SECRITKEY, GITURL, GITUSERNAM, 
+      GITPWD, CASEURL, CASEUSERNAME, 
+      CASEPWD, FREEZE, EMAIL, 
+      EMAILSTATE, REGISTERTIME, OWNER_PHOTO_BACK, 
+      OWNER_PHOTO_FRONT, ENTRUST_BOOK, AGENT_PHOTO_FRONT, 
+      AGENT_PHOTO_BACK, BUSINESS_PHOTO, ORG_PHOTO, 
+      TAX_PHOTO, VALIDATECODE, REQUESTID, 
+      IMGSTATE)
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR}, 
+      #{usertype,jdbcType=VARCHAR}, #{isrealname,jdbcType=VARCHAR}, #{issign,jdbcType=VARCHAR}, 
+      #{headpicid,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, #{accesstoken,jdbcType=VARCHAR}, 
+      #{secritkey,jdbcType=VARCHAR}, #{giturl,jdbcType=VARCHAR}, #{gitusernam,jdbcType=VARCHAR}, 
+      #{gitpwd,jdbcType=VARCHAR}, #{caseurl,jdbcType=VARCHAR}, #{caseusername,jdbcType=VARCHAR}, 
+      #{casepwd,jdbcType=VARCHAR}, #{freeze,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{emailstate,jdbcType=VARCHAR}, #{registertime,jdbcType=VARCHAR}, #{ownerPhotoBack,jdbcType=VARCHAR}, 
+      #{ownerPhotoFront,jdbcType=VARCHAR}, #{entrustBook,jdbcType=VARCHAR}, #{agentPhotoFront,jdbcType=VARCHAR}, 
+      #{agentPhotoBack,jdbcType=VARCHAR}, #{businessPhoto,jdbcType=VARCHAR}, #{orgPhoto,jdbcType=VARCHAR}, 
+      #{taxPhoto,jdbcType=VARCHAR}, #{validatecode,jdbcType=VARCHAR}, #{requestid,jdbcType=VARCHAR}, 
+      #{imgstate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lz.demo.pojo.User" >
+    insert into user_
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="userpwd != null" >
+        USERPWD,
+      </if>
+      <if test="usertype != null" >
+        USERTYPE,
+      </if>
+      <if test="isrealname != null" >
+        ISREALNAME,
+      </if>
+      <if test="issign != null" >
+        ISSIGN,
+      </if>
+      <if test="headpicid != null" >
+        HEADPICID,
+      </if>
+      <if test="introduction != null" >
+        INTRODUCTION,
+      </if>
+      <if test="accesstoken != null" >
+        ACCESSTOKEN,
+      </if>
+      <if test="secritkey != null" >
+        SECRITKEY,
+      </if>
+      <if test="giturl != null" >
+        GITURL,
+      </if>
+      <if test="gitusernam != null" >
+        GITUSERNAM,
+      </if>
+      <if test="gitpwd != null" >
+        GITPWD,
+      </if>
+      <if test="caseurl != null" >
+        CASEURL,
+      </if>
+      <if test="caseusername != null" >
+        CASEUSERNAME,
+      </if>
+      <if test="casepwd != null" >
+        CASEPWD,
+      </if>
+      <if test="freeze != null" >
+        FREEZE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="emailstate != null" >
+        EMAILSTATE,
+      </if>
+      <if test="registertime != null" >
+        REGISTERTIME,
+      </if>
+      <if test="ownerPhotoBack != null" >
+        OWNER_PHOTO_BACK,
+      </if>
+      <if test="ownerPhotoFront != null" >
+        OWNER_PHOTO_FRONT,
+      </if>
+      <if test="entrustBook != null" >
+        ENTRUST_BOOK,
+      </if>
+      <if test="agentPhotoFront != null" >
+        AGENT_PHOTO_FRONT,
+      </if>
+      <if test="agentPhotoBack != null" >
+        AGENT_PHOTO_BACK,
+      </if>
+      <if test="businessPhoto != null" >
+        BUSINESS_PHOTO,
+      </if>
+      <if test="orgPhoto != null" >
+        ORG_PHOTO,
+      </if>
+      <if test="taxPhoto != null" >
+        TAX_PHOTO,
+      </if>
+      <if test="validatecode != null" >
+        VALIDATECODE,
+      </if>
+      <if test="requestid != null" >
+        REQUESTID,
+      </if>
+      <if test="imgstate != null" >
+        IMGSTATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null" >
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null" >
+        #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="isrealname != null" >
+        #{isrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="issign != null" >
+        #{issign,jdbcType=VARCHAR},
+      </if>
+      <if test="headpicid != null" >
+        #{headpicid,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="accesstoken != null" >
+        #{accesstoken,jdbcType=VARCHAR},
+      </if>
+      <if test="secritkey != null" >
+        #{secritkey,jdbcType=VARCHAR},
+      </if>
+      <if test="giturl != null" >
+        #{giturl,jdbcType=VARCHAR},
+      </if>
+      <if test="gitusernam != null" >
+        #{gitusernam,jdbcType=VARCHAR},
+      </if>
+      <if test="gitpwd != null" >
+        #{gitpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="caseurl != null" >
+        #{caseurl,jdbcType=VARCHAR},
+      </if>
+      <if test="caseusername != null" >
+        #{caseusername,jdbcType=VARCHAR},
+      </if>
+      <if test="casepwd != null" >
+        #{casepwd,jdbcType=VARCHAR},
+      </if>
+      <if test="freeze != null" >
+        #{freeze,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailstate != null" >
+        #{emailstate,jdbcType=VARCHAR},
+      </if>
+      <if test="registertime != null" >
+        #{registertime,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhotoBack != null" >
+        #{ownerPhotoBack,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhotoFront != null" >
+        #{ownerPhotoFront,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustBook != null" >
+        #{entrustBook,jdbcType=VARCHAR},
+      </if>
+      <if test="agentPhotoFront != null" >
+        #{agentPhotoFront,jdbcType=VARCHAR},
+      </if>
+      <if test="agentPhotoBack != null" >
+        #{agentPhotoBack,jdbcType=VARCHAR},
+      </if>
+      <if test="businessPhoto != null" >
+        #{businessPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="orgPhoto != null" >
+        #{orgPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="taxPhoto != null" >
+        #{taxPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="validatecode != null" >
+        #{validatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="requestid != null" >
+        #{requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="imgstate != null" >
+        #{imgstate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lz.demo.pojo.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user_
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_
+    <set >
+      <if test="record.userid != null" >
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null" >
+        USERNAME = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwd != null" >
+        USERPWD = #{record.userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usertype != null" >
+        USERTYPE = #{record.usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isrealname != null" >
+        ISREALNAME = #{record.isrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.issign != null" >
+        ISSIGN = #{record.issign,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headpicid != null" >
+        HEADPICID = #{record.headpicid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduction != null" >
+        INTRODUCTION = #{record.introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accesstoken != null" >
+        ACCESSTOKEN = #{record.accesstoken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secritkey != null" >
+        SECRITKEY = #{record.secritkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.giturl != null" >
+        GITURL = #{record.giturl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gitusernam != null" >
+        GITUSERNAM = #{record.gitusernam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gitpwd != null" >
+        GITPWD = #{record.gitpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseurl != null" >
+        CASEURL = #{record.caseurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseusername != null" >
+        CASEUSERNAME = #{record.caseusername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.casepwd != null" >
+        CASEPWD = #{record.casepwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.freeze != null" >
+        FREEZE = #{record.freeze,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailstate != null" >
+        EMAILSTATE = #{record.emailstate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registertime != null" >
+        REGISTERTIME = #{record.registertime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownerPhotoBack != null" >
+        OWNER_PHOTO_BACK = #{record.ownerPhotoBack,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownerPhotoFront != null" >
+        OWNER_PHOTO_FRONT = #{record.ownerPhotoFront,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entrustBook != null" >
+        ENTRUST_BOOK = #{record.entrustBook,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agentPhotoFront != null" >
+        AGENT_PHOTO_FRONT = #{record.agentPhotoFront,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agentPhotoBack != null" >
+        AGENT_PHOTO_BACK = #{record.agentPhotoBack,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessPhoto != null" >
+        BUSINESS_PHOTO = #{record.businessPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgPhoto != null" >
+        ORG_PHOTO = #{record.orgPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taxPhoto != null" >
+        TAX_PHOTO = #{record.taxPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.validatecode != null" >
+        VALIDATECODE = #{record.validatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestid != null" >
+        REQUESTID = #{record.requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgstate != null" >
+        IMGSTATE = #{record.imgstate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_
+    set USERID = #{record.userid,jdbcType=VARCHAR},
+      USERNAME = #{record.username,jdbcType=VARCHAR},
+      USERPWD = #{record.userpwd,jdbcType=VARCHAR},
+      USERTYPE = #{record.usertype,jdbcType=VARCHAR},
+      ISREALNAME = #{record.isrealname,jdbcType=VARCHAR},
+      ISSIGN = #{record.issign,jdbcType=VARCHAR},
+      HEADPICID = #{record.headpicid,jdbcType=VARCHAR},
+      INTRODUCTION = #{record.introduction,jdbcType=VARCHAR},
+      ACCESSTOKEN = #{record.accesstoken,jdbcType=VARCHAR},
+      SECRITKEY = #{record.secritkey,jdbcType=VARCHAR},
+      GITURL = #{record.giturl,jdbcType=VARCHAR},
+      GITUSERNAM = #{record.gitusernam,jdbcType=VARCHAR},
+      GITPWD = #{record.gitpwd,jdbcType=VARCHAR},
+      CASEURL = #{record.caseurl,jdbcType=VARCHAR},
+      CASEUSERNAME = #{record.caseusername,jdbcType=VARCHAR},
+      CASEPWD = #{record.casepwd,jdbcType=VARCHAR},
+      FREEZE = #{record.freeze,jdbcType=VARCHAR},
+      EMAIL = #{record.email,jdbcType=VARCHAR},
+      EMAILSTATE = #{record.emailstate,jdbcType=VARCHAR},
+      REGISTERTIME = #{record.registertime,jdbcType=VARCHAR},
+      OWNER_PHOTO_BACK = #{record.ownerPhotoBack,jdbcType=VARCHAR},
+      OWNER_PHOTO_FRONT = #{record.ownerPhotoFront,jdbcType=VARCHAR},
+      ENTRUST_BOOK = #{record.entrustBook,jdbcType=VARCHAR},
+      AGENT_PHOTO_FRONT = #{record.agentPhotoFront,jdbcType=VARCHAR},
+      AGENT_PHOTO_BACK = #{record.agentPhotoBack,jdbcType=VARCHAR},
+      BUSINESS_PHOTO = #{record.businessPhoto,jdbcType=VARCHAR},
+      ORG_PHOTO = #{record.orgPhoto,jdbcType=VARCHAR},
+      TAX_PHOTO = #{record.taxPhoto,jdbcType=VARCHAR},
+      VALIDATECODE = #{record.validatecode,jdbcType=VARCHAR},
+      REQUESTID = #{record.requestid,jdbcType=VARCHAR},
+      IMGSTATE = #{record.imgstate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lz.demo.pojo.User" >
+    update user_
+    <set >
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null" >
+        USERPWD = #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null" >
+        USERTYPE = #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="isrealname != null" >
+        ISREALNAME = #{isrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="issign != null" >
+        ISSIGN = #{issign,jdbcType=VARCHAR},
+      </if>
+      <if test="headpicid != null" >
+        HEADPICID = #{headpicid,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        INTRODUCTION = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="accesstoken != null" >
+        ACCESSTOKEN = #{accesstoken,jdbcType=VARCHAR},
+      </if>
+      <if test="secritkey != null" >
+        SECRITKEY = #{secritkey,jdbcType=VARCHAR},
+      </if>
+      <if test="giturl != null" >
+        GITURL = #{giturl,jdbcType=VARCHAR},
+      </if>
+      <if test="gitusernam != null" >
+        GITUSERNAM = #{gitusernam,jdbcType=VARCHAR},
+      </if>
+      <if test="gitpwd != null" >
+        GITPWD = #{gitpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="caseurl != null" >
+        CASEURL = #{caseurl,jdbcType=VARCHAR},
+      </if>
+      <if test="caseusername != null" >
+        CASEUSERNAME = #{caseusername,jdbcType=VARCHAR},
+      </if>
+      <if test="casepwd != null" >
+        CASEPWD = #{casepwd,jdbcType=VARCHAR},
+      </if>
+      <if test="freeze != null" >
+        FREEZE = #{freeze,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailstate != null" >
+        EMAILSTATE = #{emailstate,jdbcType=VARCHAR},
+      </if>
+      <if test="registertime != null" >
+        REGISTERTIME = #{registertime,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhotoBack != null" >
+        OWNER_PHOTO_BACK = #{ownerPhotoBack,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhotoFront != null" >
+        OWNER_PHOTO_FRONT = #{ownerPhotoFront,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustBook != null" >
+        ENTRUST_BOOK = #{entrustBook,jdbcType=VARCHAR},
+      </if>
+      <if test="agentPhotoFront != null" >
+        AGENT_PHOTO_FRONT = #{agentPhotoFront,jdbcType=VARCHAR},
+      </if>
+      <if test="agentPhotoBack != null" >
+        AGENT_PHOTO_BACK = #{agentPhotoBack,jdbcType=VARCHAR},
+      </if>
+      <if test="businessPhoto != null" >
+        BUSINESS_PHOTO = #{businessPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="orgPhoto != null" >
+        ORG_PHOTO = #{orgPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="taxPhoto != null" >
+        TAX_PHOTO = #{taxPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="validatecode != null" >
+        VALIDATECODE = #{validatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="requestid != null" >
+        REQUESTID = #{requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="imgstate != null" >
+        IMGSTATE = #{imgstate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lz.demo.pojo.User" >
+    update user_
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      USERPWD = #{userpwd,jdbcType=VARCHAR},
+      USERTYPE = #{usertype,jdbcType=VARCHAR},
+      ISREALNAME = #{isrealname,jdbcType=VARCHAR},
+      ISSIGN = #{issign,jdbcType=VARCHAR},
+      HEADPICID = #{headpicid,jdbcType=VARCHAR},
+      INTRODUCTION = #{introduction,jdbcType=VARCHAR},
+      ACCESSTOKEN = #{accesstoken,jdbcType=VARCHAR},
+      SECRITKEY = #{secritkey,jdbcType=VARCHAR},
+      GITURL = #{giturl,jdbcType=VARCHAR},
+      GITUSERNAM = #{gitusernam,jdbcType=VARCHAR},
+      GITPWD = #{gitpwd,jdbcType=VARCHAR},
+      CASEURL = #{caseurl,jdbcType=VARCHAR},
+      CASEUSERNAME = #{caseusername,jdbcType=VARCHAR},
+      CASEPWD = #{casepwd,jdbcType=VARCHAR},
+      FREEZE = #{freeze,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      EMAILSTATE = #{emailstate,jdbcType=VARCHAR},
+      REGISTERTIME = #{registertime,jdbcType=VARCHAR},
+      OWNER_PHOTO_BACK = #{ownerPhotoBack,jdbcType=VARCHAR},
+      OWNER_PHOTO_FRONT = #{ownerPhotoFront,jdbcType=VARCHAR},
+      ENTRUST_BOOK = #{entrustBook,jdbcType=VARCHAR},
+      AGENT_PHOTO_FRONT = #{agentPhotoFront,jdbcType=VARCHAR},
+      AGENT_PHOTO_BACK = #{agentPhotoBack,jdbcType=VARCHAR},
+      BUSINESS_PHOTO = #{businessPhoto,jdbcType=VARCHAR},
+      ORG_PHOTO = #{orgPhoto,jdbcType=VARCHAR},
+      TAX_PHOTO = #{taxPhoto,jdbcType=VARCHAR},
+      VALIDATECODE = #{validatecode,jdbcType=VARCHAR},
+      REQUESTID = #{requestid,jdbcType=VARCHAR},
+      IMGSTATE = #{imgstate,jdbcType=VARCHAR}
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+    <select id="login" resultMap="BaseResultMap"  parameterType="com.lz.demo.pojo.User">
+                select  *  from user_ where username =#{username,jdbcType=VARCHAR}  and userpwd =#{userpwd,jdbcType=VARCHAR}
+    </select>
+</mapper>
