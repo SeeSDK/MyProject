@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *Author fuyi
- *ClassName WeatherReportServiceImpl
- *Description 实现WeatherReportService接口
- *Param
- *Return
- *Date  2018/11/26 23:23
+ * Author fuyi
+ * ClassName WeatherReportServiceImpl
+ * Description 实现WeatherReportService接口
+ * Param
+ * Return
+ * Date  2018/11/26 23:23
  */
 @Service
 public class WeatherReportServiceImpl implements WeatherReportService {
@@ -22,8 +22,8 @@ public class WeatherReportServiceImpl implements WeatherReportService {
 
 
     @Override
-    public Weather getDataByCityId(String cityId){
-        WeatherResponse result =weatherReportService.getDataByCityId(cityId);
+    public Weather getDataByCityId(String cityId) {
+        WeatherResponse result = weatherReportService.getDataByCityId(cityId);
         return result.getData();
     }
 

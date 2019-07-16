@@ -19,7 +19,7 @@ public class WeatherReportServiceTest {
     public void testGetDataByCityId() {
         Weather weather = weatherReportService.getDataByCityId("101280601");
 
-        assertEquals("Get Data By City Id", "昆明",  weather.getCity());
+        assertEquals("Get Data By City Id", "昆明", weather.getCity());
 
     }
 }

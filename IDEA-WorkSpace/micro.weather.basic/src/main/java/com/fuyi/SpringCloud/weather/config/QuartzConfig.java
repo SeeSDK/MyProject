@@ -6,24 +6,26 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- *Author fuyi
- *ClassName QuartzConfig
- *Description Quartz 配置类
- *Param
- *Return
- *Date  2018/11/21 22:50
+ * Author fuyi
+ * ClassName QuartzConfig
+ * Description Quartz 配置类
+ * Param
+ * Return
+ * Date  2018/11/21 22:50
  */
 @Configuration
 public class QuartzConfig {
-    private  final int TIME =1800; //更新频率
+    private final int TIME = 1800; //更新频率
+
     @Bean
-    public JobDetail weatherDataSyncJobJobDeatil(){
+    public JobDetail weatherDataSyncJobJobDeatil() {
         return JobBuilder.newJob(WeatherDataSyncJob.class).
                 withIdentity("wetherDataSyncJob").storeDurably().build();
     }
+
     @Bean
-    public Trigger sampleJobTrigger(){
-        SimpleScheduleBuilder ScheduleBuilder =SimpleScheduleBuilder.simpleSchedule()
+    public Trigger sampleJobTrigger() {
+        SimpleScheduleBuilder ScheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
                 .withIntervalInSeconds(TIME).repeatForever();
         return TriggerBuilder.newTrigger().forJob(weatherDataSyncJobJobDeatil())
                 .withIdentity("weatherDataSyncTrigger").withSchedule(ScheduleBuilder).build();

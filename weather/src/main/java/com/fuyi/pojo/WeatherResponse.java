@@ -3,12 +3,12 @@ package com.fuyi.pojo;
 import java.io.Serializable;
 
 /**
- *Author fuyi
- *ClassName WeatherResponse
- *Description 整个消息的返回对象
- *Param
- *Return
- *Date  2018/11/14 23:36
+ * Author fuyi
+ * ClassName WeatherResponse
+ * Description 整个消息的返回对象
+ * Param
+ * Return
+ * Date  2018/11/14 23:36
  */
 public class WeatherResponse implements Serializable {
 

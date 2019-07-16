@@ -15,12 +15,12 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 /**
- *Author fuyi
- *ClassName 城市数据服务
- *Description
- *Param
- *Return
- *Date  2018/12/23 16:00
+ * Author fuyi
+ * ClassName 城市数据服务
+ * Description
+ * Param
+ * Return
+ * Date  2018/12/23 16:00
  */
 @Service
 public class CityDataServiceImpl implements CityDataService {
@@ -28,17 +28,17 @@ public class CityDataServiceImpl implements CityDataService {
     public List<City> listCityList() throws Exception {
         //读取XML文件
         Resource resource = new ClassPathResource("citylist.xml");
-        BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(),"utf-8"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), "utf-8"));
         StringBuffer buffer = new StringBuffer();
         String line = "";
 
-        while ((line= br.readLine())!=null){
+        while ((line = br.readLine()) != null) {
             buffer.append(line);
         }
         br.close();
 
         //XML转换为Java对象
-        CityList cityList = (CityList) XmlBuilder.xmlStrToObject(CityList.class,buffer.toString());
+        CityList cityList = (CityList) XmlBuilder.xmlStrToObject(CityList.class, buffer.toString());
 
         return cityList.getCityList();
     }

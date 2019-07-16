@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *Author fuyi
- *ClassName WeatherReportController
- *Description
- *Param
- *Return
- *Date  2018/12/21 23:48
+ * Author fuyi
+ * ClassName WeatherReportController
+ * Description
+ * Param
+ * Return
+ * Date  2018/12/21 23:48
  */
 @RestController
 @RequestMapping("/report")

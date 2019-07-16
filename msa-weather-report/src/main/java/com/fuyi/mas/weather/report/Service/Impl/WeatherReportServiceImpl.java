@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *Author fuyi
- *ClassName WeatherReportServiceImpl
- *Description WeatherReportService 实现类
- *Param
- *Return
- *Date  2018/12/21 23:01
+ * Author fuyi
+ * ClassName WeatherReportServiceImpl
+ * Description WeatherReportService 实现类
+ * Param
+ * Return
+ * Date  2018/12/21 23:01
  */
 @Service
 public class WeatherReportServiceImpl implements WeatherReportService {

@@ -6,14 +6,13 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *Author fuyi
- *ClassName City
- *Description 将城市的XML转换为JavaBean
- *            Java自带了JAXB（Java Architeccture for XML Binding）工具,可以方便地处理XML，将其解析为JavaBean。
- *Param
- *Return
- *Date  2018/11/21 23:38
- *
+ * Author fuyi
+ * ClassName City
+ * Description 将城市的XML转换为JavaBean
+ * Java自带了JAXB（Java Architeccture for XML Binding）工具,可以方便地处理XML，将其解析为JavaBean。
+ * Param
+ * Return
+ * Date  2018/11/21 23:38
  */
 
 

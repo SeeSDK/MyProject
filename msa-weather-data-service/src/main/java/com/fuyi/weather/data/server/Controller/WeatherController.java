@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class WeatherController {
     @Autowired
     private WeatherDataService weatherDataService;
+
     @GetMapping("/cityId/{cityId}")
     //测试ID：101280601
-    public WeatherResponse getReportByCityId(@PathVariable("cityId") String cityId){
+    public WeatherResponse getReportByCityId(@PathVariable("cityId") String cityId) {
         return weatherDataService.getDataByCityId(cityId);
     }
+
     @GetMapping("/cityName/{cityName}")
-    public WeatherResponse getReportBycityName(@PathVariable("cityName") String cityName){
-        return  weatherDataService.getDataByCityName(cityName);
+    public WeatherResponse getReportBycityName(@PathVariable("cityName") String cityName) {
+        return weatherDataService.getDataByCityName(cityName);
     }
 
 }

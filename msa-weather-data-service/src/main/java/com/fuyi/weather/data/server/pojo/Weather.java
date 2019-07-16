@@ -11,6 +11,7 @@ public class Weather extends WeatherResponse implements Serializable {
     private String ganmao;
     private Yesterday yesterday;
     private List<Forecast> forecast;
+
     public String getCity() {
         return city;
     }

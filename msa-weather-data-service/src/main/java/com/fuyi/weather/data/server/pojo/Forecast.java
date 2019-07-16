@@ -6,7 +6,7 @@ public class Forecast implements Serializable {
     private static final long serivalVersionUID = 1L;
     private String date;     //日期，包含未来五天
     private String high;     //最高温度
-    private String  fengli;  //风力
+    private String fengli;  //风力
     private String low;      //最低温度
     private String fengxiang;//风向
     private String type;     //天气类型
